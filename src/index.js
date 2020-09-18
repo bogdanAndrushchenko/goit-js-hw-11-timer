@@ -1,3 +1,3 @@
-// import './js/classTimer';
-import './js/timer';
+
+import './js/timerControl';
 import './styles.css';

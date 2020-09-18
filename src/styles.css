@@ -14,68 +14,49 @@ body {
   color: #212121;
 }
 
-.timer {
-  display: inline-flex;
-  width: 500px;
-  flex-direction: row;
-  padding: 30px;
-  text-align: center;
-  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.2);
-  color: #212121;
-  border-radius: 2px;
-}
-
-.field {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100px;
-  margin-left: 4px;
-  margin-right: 4px;
-  text-transform: uppercase;
-  border: 0;
-  background-color: #77f006;
-  color: #ffffff;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 12px;
-  border-radius: 2px;
-  font-family: 'Roboto', sans-serif;
-}
-
-.value {
-  margin-bottom: 15px;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 30px;
-  margin-top: 0;
-  margin-bottom: 24px;
-}
-
-.label {
-  margin-bottom: 25px;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 20px;
-  margin-top: 0;
-  margin-bottom: 24px;
-}
-
-.active {
-  background-color: #2196f3;
-}
-
-.btn-face {
-  margin-top: 9px;
-  border-radius: 2px;
-}
 .btn {
-  display: inline-flex;
+  display: inline-block;
+  text-align: center;
   margin-left: 3px;
   margin-right: 3px;
   text-transform: uppercase;
   border: 0;
-  background-color: #dd04c0;
+  background-color: #04d6dd;
   color: #ffffff;
   padding: 10px 20px;
   cursor: pointer;
   font-size: 14px;
   border-radius: 2px;
+}
+
+
+ 
+.timer,.btn-box {
+  font-family: sans-serif;
+  color: #fff;
+  display: block;
+  margin-top: 20px;
+  font-weight: 100;
+  text-align: center;
+  font-size: 30px;
+}
+ 
+.field {
+  padding: 10px;
+  border-radius: 3px;
+  background: #027f88;
+  display: inline-block;
+}
+ 
+.value {
+  padding: 15px;
+  border-radius: 3px;
+  background: #2aec4a;
+  display: inline-block;
+}
+ 
+.label {
+  display: block;
+  padding-top: 5px;
+  font-size: 16px;
 }
