@@ -34,7 +34,8 @@ body {
 .timer,.btn-box {
   font-family: sans-serif;
   color: #fff;
-  display: block;
+  display: flex;
+  justify-content: center;
   margin-top: 20px;
   font-weight: 100;
   text-align: center;
@@ -43,10 +44,9 @@ body {
  
 .field {
   padding: 10px;
-  margin: 5px;
+  margin: 15px;
   border-radius: 3px;
   background: #027f88;
-  display: inline-block;
 }
  
 .value {
