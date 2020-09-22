@@ -1,3 +1,2 @@
-
-import './js/timerControl';
+import './js/startTimer';
 import './styles.css';

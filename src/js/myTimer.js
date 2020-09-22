@@ -1,7 +1,7 @@
 export {
   refs,
   showTime,
-  
+
 }
 const refs = {
   daysSpan: document.querySelector('[data-value="days"]'),
@@ -9,10 +9,9 @@ const refs = {
   minutesSpan: document.querySelector('[data-value="mins"]'),
   secondsSpan: document.querySelector('[data-value="secs"]'),
   start: document.querySelector('button[data-action-start]'),
-  stop: document.querySelector('button[data-action-stop]'),
 }
 
-console.log(refs.daysSpan);
+
 
 
 function allTimeRemaining(deadLineDate) {
@@ -50,21 +49,22 @@ function howManyDayRemaining(deadLineDate) {
   return time;
 }
 
+
+
 function showTime(deadLineDate) {
-  function createSpan(){
+  function createSpan() {
     const show = allTimeRemaining(deadLineDate);
-  refs.daysSpan.textContent = show.days;
-  refs.hoursSpan.textContent = show.hours;
-  refs.minutesSpan.textContent = show.minutes;
-  refs.secondsSpan.textContent = show.seconds; 
-  if(show.allTime<=0){
-        clearInterval(timeinterval);
+    refs.daysSpan.textContent = show.days;
+    refs.hoursSpan.textContent = show.hours;
+    refs.minutesSpan.textContent = show.minutes;
+    refs.secondsSpan.textContent = show.seconds;
+    if (show.allTime <= 0) {
+      clearInterval(timeinterval);
+
     }
   }
-  
+
   createSpan();
   const timeinterval = setInterval(createSpan, 1000);
-  console.log(createSpan);
 }
-
 
