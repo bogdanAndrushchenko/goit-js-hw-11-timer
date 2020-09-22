@@ -43,6 +43,7 @@ body {
  
 .field {
   padding: 10px;
+  margin: 5px;
   border-radius: 3px;
   background: #027f88;
   display: inline-block;
