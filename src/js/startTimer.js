@@ -1,18 +1,20 @@
- import {
-   refs,
-   showTime,
- } from "./myTimer";
+ import 
+  CountdownTimer
+  from "./myTimer";
 
+  const timer = new CountdownTimer({
+    selector: "#timer-1",
+    targetDate: new Date("2020,9,30"),
+  });
 
- function startTimer() {
-   let isActive = false;
-     if (isActive) {
-       return;
-     }
-   isActive = true;
-   showTime('2020,9,30')
- }
-
-
- refs.start.addEventListener('click', startTimer);
+  const startBtn = document.querySelector("button[data-action-start]");
+  startBtn.addEventListener("click", startTimer);
+  
+  function startTimer() {
+    startBtn.setAttribute('disabled','')
+    timer.showTime();
+  }
+  
+  
+ 
  

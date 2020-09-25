@@ -70,3 +70,31 @@ git commit -m "first commit"
 git branch -M master
 git remote add origin https://github.com/bogdanAndrushchenko/goit-js-hw-11-timer.git
 git push -u origin master
+
+My stack and tools:
+JavaScript
+
+React
+
+React
+
+Node.js
+
+MongoDB
+
+HTML5
+
+CSS3
+
+Sass
+ 
+ Webpack
+
+Git
+
+GitHub
+
+Terminal
+
+Visual Studio Code
+

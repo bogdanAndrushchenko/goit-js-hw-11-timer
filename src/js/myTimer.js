@@ -1,70 +1,58 @@
-export {
-  refs,
-  showTime,
+export default
+class CountdownTimer {
+  constructor({ selector, targetDate }) {
+    this.$selector = selector;
+    this.targetDate = targetDate;
 
-}
-const refs = {
-  daysSpan: document.querySelector('[data-value="days"]'),
-  hoursSpan: document.querySelector('[data-value="hours"]'),
-  minutesSpan: document.querySelector('[data-value="mins"]'),
-  secondsSpan: document.querySelector('[data-value="secs"]'),
-  start: document.querySelector('button[data-action-start]'),
-}
-
-
-
-
-function allTimeRemaining(deadLineDate) {
-  const time = howManyDayRemaining(deadLineDate);
-
-  const days = padZeroZero(Math.floor(time / (1000 * 60 * 60 * 24)));
-
-
-  const hours = padZeroZero(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-
-
-  const mins = padZeroZero(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
-
-
-  const secs = padZeroZero(Math.floor((time % (1000 * 60)) / 1000));
-
-  return {
-    'allTime': time,
-    'days': days,
-    'hours': hours,
-    'minutes': mins,
-    'seconds': secs,
   }
-
-}
-
-function padZeroZero(value) {
-  return String(value).padStart(2, '0');
-}
-
-function howManyDayRemaining(deadLineDate) {
-  const now = Date.parse(new Date())
-  const deadLine = Date.parse(deadLineDate)
-  const time = deadLine - now;
-  return time;
-}
-
-
-
-function showTime(deadLineDate) {
-  function createSpan() {
-    const show = allTimeRemaining(deadLineDate);
-    refs.daysSpan.textContent = show.days;
-    refs.hoursSpan.textContent = show.hours;
-    refs.minutesSpan.textContent = show.minutes;
-    refs.secondsSpan.textContent = show.seconds;
-    if (show.allTime <= 0) {
-      clearInterval(timeinterval);
-
-    }
+  _padZeroZero(value) {
+    return String(value).padStart(2, "0");
   }
+  _howManyDayRemaining() {
+    const currentTime = Date.now();
+    return Date.parse(this.targetDate) - currentTime;
+  }
+  _allTimeRemaining() {
+    const time = this._howManyDayRemaining();
+    const days = this._padZeroZero(Math.floor(time / (1000 * 60 * 60 * 24)));
+    const hours = this._padZeroZero(
+      Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+    );
+    const mins = this._padZeroZero(
+      Math.floor((time % (1000 * 60 * 60)) / (1000 * 60))
+    );
+    const secs = this._padZeroZero(Math.floor((time % (1000 * 60)) / 1000));
+    return {
+      allTime: time,
+      days: days,
+      hours: hours,
+      minutes: mins,
+      seconds: secs,
+    };
+  }
+  showTime() {
+    const timer = document.querySelector(this.$selector);
+    const daysSpan = timer.querySelector('[data-value="days"]');
+    const hoursSpan = timer.querySelector('[data-value="hours"]');
+    const minutesSpan = timer.querySelector('[data-value="mins"]');
+    const secondsSpan = timer.querySelector('[data-value="secs"]');
 
-  createSpan();
-  const timeinterval = setInterval(createSpan, 1000);
+   
+    const createSpanValue = () => {
+        const show = this._allTimeRemaining();
+      
+      daysSpan.textContent = show.days;
+      hoursSpan.textContent = show.hours;
+      minutesSpan.textContent = show.minutes;
+      secondsSpan.textContent = show.seconds;
+
+      if ((show.allTime <= 0)) {
+        clearInterval(timeinterval);
+      }
+    };
+
+    createSpanValue();
+    const timeinterval = setInterval(createSpanValue, 1000);
+  }
 }
 

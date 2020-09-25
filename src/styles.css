@@ -21,7 +21,7 @@ body {
   margin-right: 3px;
   text-transform: uppercase;
   border: 0;
-  background-color: #04d6dd;
+  background-color: #3e9fee;
   color: #ffffff;
   padding: 10px 20px;
   cursor: pointer;
@@ -44,15 +44,15 @@ body {
  
 .field {
   padding: 10px;
-  margin: 15px;
+  margin: 5px;
   border-radius: 3px;
-  background: #027f88;
+  background: #2c6468;
 }
  
 .value {
   padding: 15px;
   border-radius: 3px;
-  background: #2aec4a;
+  background: #78c7d4;
   display: inline-block;
 }
  
