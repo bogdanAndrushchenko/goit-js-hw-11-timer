@@ -1,58 +1,35 @@
 export default
 class CountdownTimer {
-  constructor({ selector, targetDate }) {
-    this.$selector = selector;
-    this.targetDate = targetDate;
+  constructor({
+    selector,
+    targetDate
+  }) {
+    this.targetDate = new Date(targetDate);
+    this.daysSpan = document.querySelector(`${selector} .value[data-value="days"]`);
+    this.hoursSpan = document.querySelector(`${selector} .value[data-value="hours"]`);
+    this.minutesSpan = document.querySelector(`${selector} .value[data-value="mins"]`);
+    this.secondsSpan = document.querySelector(`${selector} .value[data-value="secs"]`);
 
   }
-  _padZeroZero(value) {
-    return String(value).padStart(2, "0");
+  
+  _padZero(value) {
+    return value < 10 ? `0${value}` : value;
   }
-  _howManyDayRemaining() {
-    const currentTime = Date.now();
-    return Date.parse(this.targetDate) - currentTime;
+  _countDowm() {
+    const currentTime = new Date();
+    this._createSpanValue(currentTime);
   }
-  _allTimeRemaining() {
-    const time = this._howManyDayRemaining();
-    const days = this._padZeroZero(Math.floor(time / (1000 * 60 * 60 * 24)));
-    const hours = this._padZeroZero(
-      Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-    );
-    const mins = this._padZeroZero(
-      Math.floor((time % (1000 * 60 * 60)) / (1000 * 60))
-    );
-    const secs = this._padZeroZero(Math.floor((time % (1000 * 60)) / 1000));
-    return {
-      allTime: time,
-      days: days,
-      hours: hours,
-      minutes: mins,
-      seconds: secs,
-    };
-  }
+
   showTime() {
-    const timer = document.querySelector(this.$selector);
-    const daysSpan = timer.querySelector('[data-value="days"]');
-    const hoursSpan = timer.querySelector('[data-value="hours"]');
-    const minutesSpan = timer.querySelector('[data-value="mins"]');
-    const secondsSpan = timer.querySelector('[data-value="secs"]');
+    setInterval(() => this._countDowm(), 1000);
+  }
 
-   
-    const createSpanValue = () => {
-        const show = this._allTimeRemaining();
-      
-      daysSpan.textContent = show.days;
-      hoursSpan.textContent = show.hours;
-      minutesSpan.textContent = show.minutes;
-      secondsSpan.textContent = show.seconds;
+  _createSpanValue(currentTime) {
+    const time = this.targetDate - currentTime;
+    this.daysSpan.textContent = this._padZero(Math.floor(time / (1000 * 60 * 60 * 24)));
+    this.hoursSpan.textContent = this._padZero(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+    this.minutesSpan.textContent = this._padZero(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
+    this.secondsSpan.textContent = this._padZero(Math.floor((time % (1000 * 60)) / 1000));
 
-      if ((show.allTime <= 0)) {
-        clearInterval(timeinterval);
-      }
-    };
-
-    createSpanValue();
-    const timeinterval = setInterval(createSpanValue, 1000);
   }
 }
-
